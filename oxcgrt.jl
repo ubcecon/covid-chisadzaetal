@@ -148,7 +148,7 @@ ox0 = let
 	df.t = Dates.value.(df.date - Date(2020,1,1))
 	sort!(df, [:CountryCode, :t])
 	df.deaths = df.ConfirmedDeaths - panellag(:ConfirmedDeaths, df, :CountryCode, :t)
-	df.cases = df.ConfirmedDeaths - panellag(:ConfirmedDeaths, df, :CountryCode, :t)
+	df.cases = df.ConfirmedCases - panellag(:ConfirmedCases, df, :CountryCode, :t)
 	df.deathslag = panellag(:deaths, df, :CountryCode, :t)	
 	leftjoin(df, wbdf, on = :CountryName => :country)
 end;
